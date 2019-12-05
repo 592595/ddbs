@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--mybatis的核心配置文件-->
+
+<mapper namespace="com.pan.mapper.postgresql_u_2_4_2_3.OrderMapper">
+
+
+    <!--绑定接口-->
+    <select id="queryAllOrders"  resultType="com.pan.model.Orders">
+        select id_order,id_seller,name_book,sum_book,price_book,price_order,time_order,address_buyer
+         from ORDERS_MES
+    </select>
+
+    <select id="queryOrderPayById" resultType="java.lang.Boolean">
+        select pay_check from ORDERS_MES
+        where id_order=#{id_order}
+    </select>
+
+    <select id="queryOrderDeliverById" resultType="java.lang.Boolean">
+        select deliver_check from ORDERS_MES
+        where id_order=#{id_order}
+    </select>
+
+    <delete id="deleteOrderById" parameterType="java.lang.String">
+        delete from ORDERS_MES
+        where id_order=#{id_order}
+    </delete>
+
+    <insert id="addOrders">
+        insert into ORDERS_MES(id_buyer,id_order,id_seller,name_book,sum_book,price_book,price_order,time_order,address_buyer,deliver_check,pay_check)
+        values ('001',#{id_order},#{shoppingcarts.id_seller},#{shoppingcarts.name_book},#{shoppingcarts.sum_book},#{shoppingcarts.price_book},#{price_order},now(),#{address_buyer},false ,false)
+    </insert>
+
+    <select id="queryOrderBooknameById" resultType="java.lang.String">
+        select name_book from ORDERS_MES
+        where id_order=#{id_order}
+    </select>
+
+    <select id="queryOrderBooksumById" resultType="java.lang.Integer">
+        select sum_book from ORDERS_MES
+        where id_order=#{id_order}
+    </select>
+</mapper>

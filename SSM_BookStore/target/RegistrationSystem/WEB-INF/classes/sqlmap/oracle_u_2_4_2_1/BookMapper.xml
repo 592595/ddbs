@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--mybatis的核心配置文件-->
+<mapper namespace="com.pan.mapper.oracle_u_2_4_2_1.BookMapper">
+    <!--绑定接口-->
+
+    <select id="queryAllBook" resultType="Books">
+        select * from bookinfo_mes
+    </select>
+
+    <select id="queryBookByName" resultType="Books">
+        select * from bookinfo_mes
+        where name_book=#{bookName}
+    </select>
+
+    <update id="updateBookInv">
+        update bookinfo_mes set inv_book=inv_book-#{bookNum}
+        where name_book=#{bookName}
+    </update>
+
+
+</mapper>

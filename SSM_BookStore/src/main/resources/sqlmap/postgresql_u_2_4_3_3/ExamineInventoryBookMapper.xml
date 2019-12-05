@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.pan.mapper.postgresql_u_2_4_3_3.IExamBookDao">
+    <select id="findInventoryBookById" parameterType="String" resultType="com.pan.model.ExamineInventoryBook">
+        select * from examine_inventory_book_mes where book_id=#{book_id}
+    </select>
+    <select id="findAllInventoryBookById" parameterType="String" resultType="com.pan.model.InventoryBook">
+        select * from inventory_book_mes where book_id=#{book_id}
+    </select>
+    <select id="findInventoryBookALL" resultType="com.pan.model.InventoryBook">
+         select * from inventory_book_mes
+    </select>
+</mapper>

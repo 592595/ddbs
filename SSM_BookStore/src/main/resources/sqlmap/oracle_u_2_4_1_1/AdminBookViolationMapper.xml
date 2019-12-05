@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.pan.mapper.oracle_u_2_4_1_1.AdminBookViolationMapper">
+    <resultMap id="BaseResultMap" type="com.pan.model.AdminBookViolation">
+        <id column="id_book" property="id_book" jdbcType="CHAR"/>
+        <result column="id_seller" property="id_seller" jdbcType="CHAR"/>
+        <result column="name__book" property="name__book" jdbcType="VARCHAR"/>
+        <result column="price_book" property="price_book" jdbcType="INTEGER"/>
+        <result column="press_book" property="press_book" jdbcType="VARCHAR"/>
+        <result column="time_book" property="time_book" jdbcType="DATE"/>
+        <result column="sum__book" property="sum__book" jdbcType="INTEGER"/>
+    </resultMap>
+    <!--
+    parameterType 传的参数的类型
+    resultType 返回的对象
+     -->
+    <select id="selectAllBooks" resultMap="BaseResultMap">
+		select * from illegal_book_mes
+	</select>
+
+    <insert id="insertBooks" parameterType="AdminBookViolation">
+        insert into illegal_book_mes(id_book,id_seller,name__book,price_book,press_book,time_book,sum__book)
+        values (#{id_book},#{id_seller},#{name__book},#{price_book},#{press_book},#{time_book},#{sum__book})
+    </insert>
+
+</mapper>

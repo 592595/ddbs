@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.pan.mapper.oracle_u_2_4_1_1.AdminBookMapper">
+    <resultMap id="BaseResultMap" type="com.pan.model.AdminBook">
+        <id column="id_book" property="id_book" jdbcType="CHAR"/>
+        <result column="id_seller" property="id_seller" jdbcType="CHAR"/>
+        <result column="name__book" property="name__book" jdbcType="VARCHAR"/>
+        <result column="price_book" property="price_book" jdbcType="INTEGER"/>
+        <result column="press_book" property="press_book" jdbcType="VARCHAR"/>
+        <result column="time_book" property="time_book" jdbcType="DATE"/>
+        <result column="sum__book" property="sum__book" jdbcType="INTEGER"/>
+        <result column="type_book" property="type_book" jdbcType="VARCHAR"/>
+    </resultMap>
+    <!--
+    parameterType 传的参数的类型
+    resultType 返回的对象
+     -->
+    <select id="selectAllBooks" resultMap="BaseResultMap">
+		select * from BOOKS_MES
+	</select>
+
+    <delete id="deleteBooks" parameterType="string">
+        delete from BOOKS_MES
+        where id_book=#{id_book}
+    </delete>
+
+</mapper>

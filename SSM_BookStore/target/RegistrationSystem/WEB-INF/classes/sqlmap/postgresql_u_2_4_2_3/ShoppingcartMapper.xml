@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--mybatis的核心配置文件-->
+<mapper namespace="com.pan.mapper.postgresql_u_2_4_2_3.ShoppingcartMapper">
+    <resultMap id="BaseResultMap" type="com.pan.model.Shoppingcarts">
+        <id column="id_buyer" property="id_buyer" jdbcType="CHAR"/>
+        <result column="name_book" property="name_book" jdbcType="VARCHAR"/>
+        <result column="id_seller" property="id_seller" jdbcType="CHAR"/>
+        <result column="sum_book" property="sum_book" jdbcType="INTEGER"/>
+        <result column="price_book" property="price_book" jdbcType="INTEGER"/>
+    </resultMap>
+    <!--绑定接口-->
+    <select id="queryBookByName" resultMap="BaseResultMap">
+            select * from shoppingcart_mes where name_book=#{bookName}
+    </select>
+    <insert id="addBook" parameterType="Books">
+        insert into shoppingcart_mes(id_buyer,name_book,id_seller,sum_book,price_book)
+        values ('001',#{name_book},#{id_seller},1,#{price_book})
+    </insert>
+    <update id="updateBookSum" parameterType="Books">
+        update shoppingcart_mes set sum_book=sum_book+1
+        where name_book=#{name_book}
+    </update>
+    <select id="queryAllShoppingcarts" resultMap="BaseResultMap">
+        select * from shoppingcart_mes
+    </select>
+    <delete id="DeletebyBookName">
+        delete from shoppingcart_mes
+        where name_book=#{bookName}
+    </delete>
+
+</mapper>

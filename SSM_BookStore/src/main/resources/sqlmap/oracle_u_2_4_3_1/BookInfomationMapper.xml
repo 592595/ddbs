@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.pan.mapper.oracle_u_2_4_3_1.AddBookDao">
+    <select id="findBookCount" resultType="java.lang.Integer" >
+        select count(*) from book_info_mes
+    </select>
+    <insert id="addBook" parameterType="com.pan.model.BookInfo">
+        insert into book_info_mes  values (
+        #{book_id},
+        #{book_name},
+        #{author},
+        #{book_price},
+        #{publishing_house},
+        #{book_type},
+        #{publishing_time},
+        #{inventory}
+        )
+    </insert>
+    <select id="checkDuplicateBook" parameterType="java.lang.String" resultType="java.lang.Boolean">
+         select count(book_id) from book_info_mes where book_id=#{book_id}
+    </select>
+    <select id="findBookById" parameterType="java.lang.String" resultType="com.pan.model.BookInfo">
+        select * from book_info_mes where book_id=#{book_id}
+    </select>
+</mapper>

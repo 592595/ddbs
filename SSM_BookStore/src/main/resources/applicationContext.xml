@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.2.xsd
+  	 http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.2.xsd
+ 	 http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.2.xsd
+ 	 http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.3.xsd">
+
+    <context:component-scan base-package="com.pan">
+        <context:include-filter type="annotation"
+                                expression="org.springframework.stereotype.Component" />
+        <context:include-filter type="annotation"
+                                expression="org.springframework.stereotype.Repository" />
+        <context:include-filter type="annotation"
+                                expression="org.springframework.stereotype.Service" />
+    </context:component-scan>
+
+    <!-- 加载配数据源配置文件 db.properties -->
+    <context:property-placeholder location="classpath:db.properties" />
+
+
+    <!-- 查看买家功能 -->
+    <!-- datasource_oracle_u_2_4_1_1-->
+    <bean id="datasource_oracle_u_2_4_1_1" class="com.mchange.v2.c3p0.ComboPooledDataSource" destroy-method="close">
+        <property name="driverClass" value="${datasource_oracle_u_2_4_1_1.connection.driver_class}"/>
+        <property name="jdbcUrl" value="${datasource_oracle_u_2_4_1_1.connection.url}"/>
+        <property name="user" value="${datasource_oracle_u_2_4_1_1.connection.username}"/>
+        <property name="password" value="${datasource_oracle_u_2_4_1_1.connection.password}"/>
+    </bean>
+    <!-- datasource_sqlserver_u_2_4_1_2-->
+    <bean id="datasource_sqlserver_u_2_4_1_2" class="com.mchange.v2.c3p0.ComboPooledDataSource" destroy-method="close">
+        <property name="driverClass" value="${datasource_sqlserver_u_2_4_1_2.connection.driver_class}"/>
+        <property name="jdbcUrl" value="${datasource_sqlserver_u_2_4_1_2.connection.url}"/>
+        <property name="user" value="${datasource_sqlserver_u_2_4_1_2.connection.username}"/>
+        <property name="password" value="${datasource_sqlserver_u_2_4_1_2.connection.password}"/>
+    </bean>
+    <!-- datasource_postgresql_v-->
+    <bean id="datasource_postgresql_u_2_4_1_3" class="com.mchange.v2.c3p0.ComboPooledDataSource" destroy-method="close">
+        <property name="driverClass" value="${datasource_postgresql_u_2_4_1_3.connection.driver_class}"/>
+        <property name="jdbcUrl" value="${datasource_postgresql_u_2_4_1_3.connection.url}"/>
+        <property name="user" value="${datasource_postgresql_u_2_4_1_3.connection.username}"/>
+        <property name="password" value="${datasource_postgresql_u_2_4_1_3.connection.password}"/>
+    </bean>
+
+    <!--卖家-->
+    <!-- datasource_oracle_u_2_4_3_1-->
+    <bean id="datasource_oracle_u_2_4_3_1" class="com.mchange.v2.c3p0.ComboPooledDataSource" destroy-method="close">
+        <property name="driverClass" value="${datasource_oracle_u_2_4_3_1.connection.driver_class}"/>
+        <property name="jdbcUrl" value="${datasource_oracle_u_2_4_3_1.connection.url}"/>
+        <property name="user" value="${datasource_oracle_u_2_4_3_1.connection.username}"/>
+        <property name="password" value="${datasource_oracle_u_2_4_3_1.connection.password}"/>
+    </bean>
+    <!-- datasource_sqlserver_u_2_4_3_2-->
+    <bean id="datasource_sqlserver_u_2_4_3_2" class="com.mchange.v2.c3p0.ComboPooledDataSource" destroy-method="close">
+        <property name="driverClass" value="${datasource_sqlserver_u_2_4_3_2.connection.driver_class}"/>
+        <property name="jdbcUrl" value="${datasource_sqlserver_u_2_4_3_2.connection.url}"/>
+        <property name="user" value="${datasource_sqlserver_u_2_4_3_2.connection.username}"/>
+        <property name="password" value="${datasource_sqlserver_u_2_4_3_2.connection.password}"/>
+    </bean>
+    <!-- datasource_postgresql_v-->
+    <bean id="datasource_postgresql_u_2_4_3_3" class="com.mchange.v2.c3p0.ComboPooledDataSource" destroy-method="close">
+        <property name="driverClass" value="${datasource_postgresql_u_2_4_3_3.connection.driver_class}"/>
+        <property name="jdbcUrl" value="${datasource_postgresql_u_2_4_3_3.connection.url}"/>
+        <property name="user" value="${datasource_postgresql_u_2_4_3_3.connection.username}"/>
+        <property name="password" value="${datasource_postgresql_u_2_4_3_3.connection.password}"/>
+    </bean>
+
+    <!--买家-->
+    <!-- datasource_oracle_u_2_4_3_1-->
+    <bean id="datasource_oracle_u_2_4_2_1" class="com.mchange.v2.c3p0.ComboPooledDataSource" destroy-method="close">
+        <property name="driverClass" value="${datasource_oracle_u_2_4_2_1.connection.driver_class}"/>
+        <property name="jdbcUrl" value="${datasource_oracle_u_2_4_2_1.connection.url}"/>
+        <property name="user" value="${datasource_oracle_u_2_4_2_1.connection.username}"/>
+        <property name="password" value="${datasource_oracle_u_2_4_2_1.connection.password}"/>
+    </bean>
+    <!-- datasource_sqlserver_u_2_4_2_2-->
+    <bean id="datasource_sqlserver_u_2_4_2_2" class="com.mchange.v2.c3p0.ComboPooledDataSource" destroy-method="close">
+        <property name="driverClass" value="${datasource_sqlserver_u_2_4_2_2.connection.driver_class}"/>
+        <property name="jdbcUrl" value="${datasource_sqlserver_u_2_4_2_2.connection.url}"/>
+        <property name="user" value="${datasource_sqlserver_u_2_4_2_2.connection.username}"/>
+        <property name="password" value="${datasource_sqlserver_u_2_4_2_2.connection.password}"/>
+    </bean>
+    <!-- datasource_postgresql_v-->
+    <bean id="datasource_postgresql_u_2_4_2_3" class="com.mchange.v2.c3p0.ComboPooledDataSource" destroy-method="close">
+        <property name="driverClass" value="${datasource_postgresql_u_2_4_2_3.connection.driver_class}"/>
+        <property name="jdbcUrl" value="${datasource_postgresql_u_2_4_2_3.connection.url}"/>
+        <property name="user" value="${datasource_postgresql_u_2_4_2_3.connection.username}"/>
+        <property name="password" value="${datasource_postgresql_u_2_4_2_3.connection.password}"/>
+    </bean>
+
+    <!-- 数据源切换 -->
+    <bean id="dataSource" class="com.pan.dataSource.DynamicDataSource">
+        <property name="targetDataSources">
+            <map key-type="java.lang.String">
+
+                <!-- 查看买家功能 -->
+                <entry key="datasource_oracle_u_2_4_1_1" value-ref="datasource_oracle_u_2_4_1_1"></entry>
+                <entry key="datasource_sqlserver_u_2_4_1_2" value-ref="datasource_sqlserver_u_2_4_1_2"></entry>
+                <entry key="datasource_postgresql_u_2_4_1_3" value-ref="datasource_postgresql_u_2_4_1_3"></entry>
+                <!--卖家-->
+                <entry key="datasource_oracle_u_2_4_3_1" value-ref="datasource_oracle_u_2_4_3_1"></entry>
+                <entry key="datasource_sqlserver_u_2_4_3_2" value-ref="datasource_sqlserver_u_2_4_3_2"></entry>
+                <entry key="datasource_postgresql_u_2_4_3_3" value-ref="datasource_postgresql_u_2_4_3_3"></entry>
+                <!--买家-->
+                <entry key="datasource_oracle_u_2_4_2_1" value-ref="datasource_oracle_u_2_4_2_1"></entry>
+                <entry key="datasource_sqlserver_u_2_4_2_2" value-ref="datasource_sqlserver_u_2_4_2_2"></entry>
+                <entry key="datasource_postgresql_u_2_4_2_3" value-ref="datasource_postgresql_u_2_4_2_3"></entry>
+            </map>
+        </property>
+        <!-- 这里可以指定默认的数据源 -->
+<!--        <property name="defaultTargetDataSource" ref="datasource_sqlserver_u_2_4_1_2" />-->
+    </bean>
+    <!-- 数据源切面 -->
+    <bean id="dataSourceAspect" class="com.pan.dataSource.DataSourceAspect" />
+    <aop:config>
+        <aop:aspect ref="dataSourceAspect">
+            <!-- 拦截所有service方法 -->
+            <aop:pointcut id="dataSourcePointcut"
+                          expression="execution(* com.pan.mapper.*.*.*(..))" />
+            <aop:before pointcut-ref="dataSourcePointcut" method="intercept" />
+        </aop:aspect>
+    </aop:config>
+
+    <!-- 事务管理器 （JDBC） -->
+    <bean id="transactionManager"
+          class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+        <property name="dataSource" ref="dataSource"></property>
+    </bean>
+
+    <!-- 启动声明式事务驱动 -->
+    <tx:annotation-driven transaction-manager="transactionManager" />
+
+
+    <!-- spring 通过 sqlSessionFactoryBean 获取 sqlSessionFactory 工厂类 -->
+    <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+        <property name="dataSource" ref="dataSource"></property>
+        <!-- 扫描 po 包，使用别名 -->
+        <property name="typeAliasesPackage" value="com.pan.model"></property>
+        <!-- 扫描映射文件 -->
+        <property name="mapperLocations">
+            <array>
+<!--                <value>classpath:../resources/sqlmap/*/*.xml</value>-->
+                <value>classpath:/sqlmap/*/*.xml</value>
+            </array>
+        </property>
+        <!-- mybatis -->
+        <property name="configLocation" value="classpath:/sqlmap/mybatis-config.xml"></property>
+<!--        <property name="configLocation" value="classpath:config/mybatis/mybatis-config.xml"></property>-->
+    </bean>
+
+    <!-- 配置扫描 dao 包，动态实现 dao 接口，注入到 spring 容器中 -->
+    <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+        <property name="basePackage">
+            <value>
+                com.pan.mapper,
+                <!-- 管理员-->
+                com.pan.mapper.oracle_u_2_4_1_1,
+                com.pan.mapper.sqlserver_u_2_4_1_2,
+                com.pan.mapper.postgresql_u_2_4_1_3,
+                <!-- 买家-->
+                com.pan.mapper.oracle_u_2_4_2_1,
+                com.pan.mapper.sqlserver_u_2_4_2_2,
+                com.pan.mapper.postgresql_u_2_4_2_3,
+            </value>
+        </property>
+        <!-- 注意使用 sqlSessionFactoryBeanName 避免出现spring 扫描组件失效问题 -->
+        <property name="sqlSessionFactoryBeanName" value="sqlSessionFactory" />
+    </bean>
+
+<!--    <bean id="gson" class="com.google.gson.Gson" scope="prototype"></bean>-->
+</beans>
+

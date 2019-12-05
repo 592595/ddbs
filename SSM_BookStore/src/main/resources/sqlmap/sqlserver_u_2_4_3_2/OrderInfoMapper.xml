@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.pan.mapper.sqlserver_u_2_4_3_2.OrderInfoDao">
+    <select id="findOrderById" resultType="com.pan.model.OrderInfo" parameterType="java.lang.String">
+        select * from order_info_mes where order_id=#{order_id}
+    </select>
+    <select id="findOrderCount" resultType="java.lang.Integer">
+        select count(*) from order_info_mes
+    </select>
+    <select id="findByPage" parameterType="Map" resultType="com.pan.model.OrderInfo">
+            select * from order_info_mes
+            order by order_id
+            offset #{start} rows
+            fetch next #{size} rows only;
+    </select>
+</mapper>

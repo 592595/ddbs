@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--mybatis的核心配置文件-->
+<mapper namespace="com.pan.mapper.postgresql_u_2_4_2_3.BookMapper">
+    <resultMap id="BaseResultMap" type="com.pan.model.Books">
+        <id column="name_book" property="name_book" jdbcType="VARCHAR"/>
+        <result column="id_seller" property="id_seller" jdbcType="CHAR"/>
+        <result column="inv_book" property="inv_book" jdbcType="INTEGER"/>
+        <result column="price_book" property="price_book" jdbcType="INTEGER"/>
+    </resultMap>
+    <!--绑定接口-->
+
+    <select id="queryAllBook" resultMap="BaseResultMap">
+        select * from bookinfo_mes
+    </select>
+
+    <select id="queryBookByName" resultMap="BaseResultMap">
+        select * from bookinfo_mes
+        where name_book=#{bookName}
+    </select>
+
+    <update id="updateBookInv">
+        update bookinfo_mes set inv_book=inv_book-#{bookNum}
+        where name_book=#{bookName}
+    </update>
+
+
+</mapper>
